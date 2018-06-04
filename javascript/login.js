@@ -1,12 +1,21 @@
-$(document).ready(function(){
-    $("a").click(function(){
-        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-    });
-});
 
-function registerUser(event) {
-   // event.preventDefault();
-    if (validateEmail(document.getElementById("email"))) {
+function processForm(e) {
+    if (e.preventDefault) e.preventDefault();
+
+   registerUser();
+    return false;
+}
+
+function openRegister(){
+    window.location = "register.html";
+}
+
+function openLogin(){
+    window.location = "index.html";
+}
+
+function registerUser() {
+    if (validate()) {
         var newdata = getData();
         window.alert("user " + newdata.Fname + " " + newdata.Lname + " registered successfully");
         setUser(newdata.Email);
@@ -16,7 +25,6 @@ function registerUser(event) {
         window.location = "./Assets/html/homepage.html";
         return true;
     } else {
-       
         return false;
     }
 }
@@ -41,4 +49,40 @@ function getData() {
     var gender = document.getElementById("gender").value;
     var newUserObj = new User(Fname, Lname, Email, Address, imgurl, pwd, gender);
     return newUserObj;
+}
+
+function login(event) {
+
+    event.preventDefault();
+     if(validateEmail(document.getElementById("email")))
+       {
+
+ 
+    var emailaddr = document.getElementById("email").value;
+    var pwd = document.getElementById("login_password").value;
+    var allEntries = getArray();
+    var x = search(emailaddr, pwd, allEntries);
+    if (x != null) {
+        window.alert("welcome");
+        setUser(emailaddr);
+        window.location = './Assets/html/homepage.html';
+
+    } else
+    {   
+        alert("Invalid Credentials");
+        return false;
+        }
+
+       }
+       return false;
+
+   
+}
+
+function search(username, pwd, allEntries) {
+    for (x = 0; x < allEntries.length; x++) {
+        if ((username == allEntries[x].Email) && (pwd == allEntries[x].pwd))
+            return x;
+    }
+    return null;
 }

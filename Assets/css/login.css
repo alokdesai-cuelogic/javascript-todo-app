@@ -78,7 +78,7 @@
   text-decoration: none;
 }
 .form .register-form {
-  display: none;
+  display: all;
 }
 .container {
   position: relative;

@@ -1,0 +1,35 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="./Assets/css/login.css">
+  <!-- <script type="text/javascript"  src="../../javascript/jquery.min.js"></script> -->
+  <script type="text/javascript" src="./javascript/login.js"></script>
+  <script type="text/javascript" src="./javascript/validations.js"></script>
+  <script type="text/javascript" src="./javascript/storageModule.js"></script>
+</head>
+
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" id="email" placeholder="Email" required />
+      <input type="password" id="register_password" placeholder="Password" required />
+      <input type="text" id="first_name" placeholder="First Name" required/>
+      <input type="text" id="last_name" placeholder="Last Name" required/>
+
+      <label for="Gender">Gender 
+        <select style="margin-left: 30px;" name="Gender" id="gender" required>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>  
+      </label>
+
+      <div>
+        <label style="width:70px;">Address</label>
+        <textarea rows="4" cols="20" name="Address" id="address" required> </textarea> 
+      </div>
+
+      <input type="file" id="profile_image" name="imagefile" accept="image/jpeg, image/png">
+
+      <button id="create_user" type="button" onclick=" return registerUser();">create</button>
+      <p class="message">Already registered? <a href="index.html">Sign In</a></p>
+    </form>
+  </div>
+</div>
