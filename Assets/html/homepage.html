@@ -1,28 +1,106 @@
 <!DOCTYPE html>
-<html>
-<body>
-<head>
-	<link rel="stylesheet" type="text/css" href="../../Assets/css/homepage.css">
-  
-<script src="../../javascript/jquery.min.js"></script>
- </head>
+<html lang="en">
 
-<body>
-<div id="myDIV" class="header">
-  <h2 style="margin:5px">My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Welcome</title>
+    <script type="text/javascript">
+    	function additem() {
+    	window.location = "./add_item.html";
+	}
+    </script>
+  </head>
 
-<ul id="myUL">
-  <li>Hit the gym</li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
-</ul>
+  <body onload="">
+     
+    <header>
+      <div class="container">
+      	<div id="div_profile">
+        <button class="fa fa-user" href="">  Profile</button>
+        <button class="fa fa-power-off" onclick=""> Logout</button>
+        </div> 
+      </div>
+    </header>
+    <main>
+      <div class="container">
+          <p id="username"></p>
+          <div id="buttons">
+     <button class="fa fa-plus" onclick="window.location = './add_item.html';">  ADD</button>
+     <button class="fa fa-trash">  Delete</button>
+     <button class="fa fa-search">  Search</button> 
+       <select name="searchtype" id="searchtype" onchange="acceptip()"  style="display: none;">
+         <option value="none" selected="selected">--Select--</option>
+              <option value="DateR">Date Range</option>
+              <option value="Cat">Categories</option>
+              <option value="donestatus">Is Done</option>
+      </select>  
+      <div id="searchbydaterange" style="display: none;">
+      From <input type=date id='startDate'>To<input type=date id='endDate'> 
+        <button id="searchbydateR" onclick="searchbydateR();">Search</button>
+        <button id="refresh" onclick="loadhomepage();">Clear</button>
+      </div>
+        <div id="searchCat" style="display: none;">
+          <select name='catlist' id='catlist'>
+             <option value="none" selected="selected">--Select--</option>
+            <option value='office'> Office </option>
+            <option value='Home'> Home </option>
+             <option value='Personal'> Personal </option>
 
-<script src="../../javascript/homepage.js"></script>
-</body>
+          </select>
+             <button id="searchbyCat" onclick="searchbyCat();">  Search</button>
+        <button id="refresh" onclick="loadhomepage();">Clear</button>
+        </div>
+
+         <div id="searchIsdone" style="display: none;">
+          <select name='Islist' id='Islist'>
+             <option value="none" selected="selected">--Select--</option>
+            <option value='itsdone'> Done </option>
+            <option value='itsdoing'> Pending </option>
+          </select>
+             <button id="searchbyCat" onclick="searchByDoneStatus();">Search</button>
+        <button id="refresh" onclick="loadhomepage();">Clear</button>
+        </div>
+   
+    </div>
+
+    
+     <table id="customers" >
+        <tr id="todo_header">
+          <th> Sr No </th>
+          <th id="title">Title</th>
+          <th id="catogory">Category</th>
+          <th id="duedate">DueDate</th>
+          <th id="reminder">Reminder</th>
+          <th id="reminder">Reminder Date</th>
+          <th id="visibility">Visibility</th>
+          <th id="status">Current Status</th>
+        </tr>
+
+        <tr>
+        	<td> 1</td>
+        	<td> Todo</td>
+        	<td> Personal</td>
+        	<td> 10-10-18</td>
+        	<td> Yes</td>
+        	<td> 09-10-18</td>
+        	<td> Yes</td>
+        	<td> Pending</td>
+        </tr>
+
+       
+    </div>
+    </main>
+
+    </div>
+  </body>
+
 </html>
