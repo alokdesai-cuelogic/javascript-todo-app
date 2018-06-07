@@ -13,31 +13,27 @@
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Welcome</title>
-    <script type="text/javascript">
-    	function additem() {
-    	window.location = "./add_item.html";
-	}
-    </script>
+    <script src="../../javascript/ToDoModule.js"> </script>
+    <script src="../../javascript/storageModule.js"></script>
   </head>
 
-  <body onload="">
+  <body onload="loadhomepage()">
      
     <header>
       <div class="container">
       	<div id="div_profile">
         <button class="fa fa-user" href="">  Profile</button>
-        <button class="fa fa-power-off" onclick=""> Logout</button>
+        <button class="fa fa-power-off" onclick="window.location = '../../index.html';"> Logout</button>
         </div> 
       </div>
     </header>
     <main>
       <div class="container">
-          <p id="username"></p>
           <div id="buttons">
      <button class="fa fa-plus" onclick="window.location = './add_item.html';">  ADD</button>
-     <button class="fa fa-trash">  Delete</button>
-     <button class="fa fa-search">  Search</button> 
-       <select name="searchtype" id="searchtype" onchange="acceptip()"  style="display: none;">
+     <button class="fa fa-trash" onclick="deleteItems();">  Delete</button>
+     <button class="fa fa-search" onclick="showSearch();">  Search</button> 
+       <select name="searchtype" id="searchtype" onchange="checkSearchType()"  style="display: none;">
          <option value="none" selected="selected">--Select--</option>
               <option value="DateR">Date Range</option>
               <option value="Cat">Categories</option>
@@ -45,7 +41,7 @@
       </select>  
       <div id="searchbydaterange" style="display: none;">
       From <input type=date id='startDate'>To<input type=date id='endDate'> 
-        <button id="searchbydateR" onclick="searchbydateR();">Search</button>
+        <button id="searchbydateR" onclick="searchbyDateRange();">Search</button>
         <button id="refresh" onclick="loadhomepage();">Clear</button>
       </div>
         <div id="searchCat" style="display: none;">
@@ -75,6 +71,7 @@
     
      <table id="customers" >
         <tr id="todo_header">
+          <th> </th>
           <th> Sr No </th>
           <th id="title">Title</th>
           <th id="catogory">Category</th>
@@ -84,19 +81,8 @@
           <th id="visibility">Visibility</th>
           <th id="status">Current Status</th>
         </tr>
-
-        <tr>
-        	<td> 1</td>
-        	<td> Todo</td>
-        	<td> Personal</td>
-        	<td> 10-10-18</td>
-        	<td> Yes</td>
-        	<td> 09-10-18</td>
-        	<td> Yes</td>
-        	<td> Pending</td>
-        </tr>
-
-       
+        </table>
+        <center id="no_item" style="margin:40px; font-size:25px; display:none;">No items availabel.</center>
     </div>
     </main>
 
